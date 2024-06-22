@@ -1,15 +1,20 @@
 'use client'
 
 import { TextField, Button } from '@mui/material';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
+
+interface Recipe {
+  name: string;
+  ingredients: Array<{ name: string; quantity: string; unit: string }>;
+}
 
 export default function Home() {
   
-  const [openaiApiKey, setOpenaiApiKey] = useState('');
-  const [recipeUrl, setRecipeUrl] = useState('');
-  const [recipe, setRecipe] = useState(null);
+  const [openaiApiKey, setOpenaiApiKey] = useState<string>('');
+  const [recipeUrl, setRecipeUrl] = useState<string>('');
+  const [recipe, setRecipe] = useState<Recipe | null>(null);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     setRecipe(null);
     event.preventDefault();
 
