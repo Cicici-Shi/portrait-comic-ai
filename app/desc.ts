@@ -66,7 +66,7 @@ async function getComicTool() {
   const imageGenerationChain = await getImageGenerationChain();
 
   const ComicTool = new DynamicStructuredTool({
-    name: "generate-comic",
+    name: "generate-element-desc",
     schema: z.object({
       description: z.string().describe("来访者想要添加的人像画元素"),
     }),
@@ -74,8 +74,8 @@ async function getComicTool() {
       const imageURL = await imageGenerationChain.invoke({ description });
       return imageURL;
     },
-    description: "根据来访者的描述，生成一幅黑白漫画人像画并提供图片链接",
-    returnDirect: true,
+    description:
+      "根据来访者的描述，生成黑白漫画人像画的元素描述， 需要把元素润色得卡通化，格式为Markdown",
   });
 
   return ComicTool;
@@ -90,7 +90,7 @@ async function getConversationAgent() {
   const agentPrompt = await ChatPromptTemplate.fromMessages([
     [
       "system",
-      "你是一名接待来访者的助理，通过自然语言询问来访者想要的人像画元素，可以收集背景（包括星星、月亮、礼花、小地球、小花、小元宝）、饰品、宠物、其他等信息，用户比较懒得思考，你要尽量引导。语言需要有亲和力与吸引力。直到你有足够的信息调用 generate-comic 来生成图片链接。",
+      "你是一名接待来访者的助理，通过自然语言询问来访者想要的人像画卡通元素，可以收集背景（包括闪亮的星星、月亮、礼花、小地球、小花、小元宝，只选一种就够了）、饰品、宠物、其他等信息，用户比较懒得思考，你要尽量引导。语言需要有亲和力与吸引力。直到你有足够的信息调用 generate-element-desc 来生成描述背景元素的 markdown。",
     ],
     new MessagesPlaceholder("history_message"),
     ["human", "{input}"],
@@ -159,7 +159,7 @@ async function main() {
   console.log(`
 欢迎选择我们的手绘人像服务！为了帮助画师更好地创作，请您描述您希望的人像漫画内容和元素。请尽量详细地提供信息，以便画师创作出最符合您期望的作品。
 
-1. 背景：您希望画面背景有哪些元素呢？例如星星、月亮、礼花、小地球、小花、小元宝等。
+1. 背景：您希望画面背景有哪些元素呢？例如闪亮的星星、月亮、礼花、小地球、小花、小元宝等，只选一个就够了。
 2. 饰品：您想让人物佩戴什么饰品吗？例如帽子、眼镜、耳环、项链等。
 3 宠物：画中是否需要添加宠物？如果需要，请描述宠物的类型和外观。
 4. 其他细节：还有其他特别的要求或细节需要包括在画中吗？

@@ -1,3 +1,6 @@
+Get an OpenAI API key from platform.openai.com/api-keys. Make sure you are at least a Tier 1 API user, which means you have access to GPT-4 Vision. You can check your tier on the OpenAI API Limits.
+https://github.com/philipandersson/make-real-react
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
