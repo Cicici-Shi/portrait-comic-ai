@@ -2,26 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  background: lightgray;
+  background-color: hsl(var(--background));
+}
+@layer base {
+  :root {
+    --background: 36 39% 88%;
+    --foreground: 36 45% 15%;
+    --primary: 36 45% 70%;
+    --primary-foreground: 36 45% 11%;
+    --secondary: 40 35% 77%;
+    --secondary-foreground: 36 45% 25%;
+    --accent: 36 64% 57%;
+    --accent-foreground: 36 72% 17%;
+    --destructive: 0 84% 37%;
+    --destructive-foreground: 0 0% 98%;
+    --muted: 36 33% 75%;
+    --muted-foreground: 36 45% 25%;
+    --card: 36 46% 82%;
+    --card-foreground: 36 45% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --border: 36 45% 60%;
+    --input: 36 45% 60%;
+    --ring: 36 45% 30%;
+    --radius: 0rem;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  * {
+    @apply border-border;
   }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+/* button {
+  color: hsl(var(--primary-foreground))!important;
+  background-color: hsl(var(--primary))!important;
+  border-color: hsl(var(--border))!important;
+  border-radius: 0!important;
+  padding: 8px 16px;
+} */
+
+button.MuiButton-root {
+  color: hsl(var(--primary-foreground));
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--border));
+  border-radius: 0;
+  padding: 8px 16px;
+  &:hover {
+    background-color: hsl(var(--primary));
+  }
+}
+
+/* global.css */
+textarea:focus-visible {
+  --tw-ring-color: hsl(var(--ring));
+  outline: none;
+  box-shadow: 0 0 0 2px var(--tw-ring-color);
+}
+
+textarea {
+  background-color: transparent;
+  color: var(--muted-foreground);
+  width: 100%;
+  margin-top: 16px;
+  padding: 8px 12px;
+}
+
+textarea::placeholder {
+  color: var(--muted-foreground);
 }
