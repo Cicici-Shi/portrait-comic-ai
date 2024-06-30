@@ -2,6 +2,7 @@ import React from 'react';
 import { useGlobalContext } from '../../app/GlobalContext';
 import { useRouter } from 'next/router';
 import { Button, TextareaAutosize } from '@mui/material';
+import Image from 'next/image'
 
 const CreatePortraitPage = () => {
   const { openaiKey, imageUrl } = useGlobalContext();
@@ -33,7 +34,7 @@ const CreatePortraitPage = () => {
             <div>
               <h2 className="text-xl font-semibold">2. Discuss Your Vision</h2>
               <p className="text-muted-foreground">
-                Chat with our AI assistant to describe the personalized elements you'd like to see in your portrait.
+                Chat with our AI assistant to describe the personalized elements you&apos;d like to see in your portrait.
               </p>
               <div className="mt-4">
                 <Button>Start Conversation</Button>
@@ -53,18 +54,18 @@ const CreatePortraitPage = () => {
             Check out some examples of our custom portraits to get ideas for your own.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <img src="https://generated.vusercontent.net/placeholder.svg" width={300} height={300} alt="Portrait Example" className="rounded-lg" />
-            <img src="https://generated.vusercontent.net/placeholder.svg" width={300} height={300} alt="Portrait Example" className="rounded-lg" />
-            <img src="https://generated.vusercontent.net/placeholder.svg" width={300} height={300} alt="Portrait Example" className="rounded-lg" />
-            <img src="https://generated.vusercontent.net/placeholder.svg" width={300} height={300} alt="Portrait Example" className="rounded-lg" />
+            <Image src="https://generated.vusercontent.net/placeholder.svg" width={300} height={300} alt="Portrait Example" className="rounded-lg" />
+            <Image src="https://generated.vusercontent.net/placeholder.svg" width={300} height={300} alt="Portrait Example" className="rounded-lg" />
+            <Image src="https://generated.vusercontent.net/placeholder.svg" width={300} height={300} alt="Portrait Example" className="rounded-lg" />
+            <Image src="https://generated.vusercontent.net/placeholder.svg" width={300} height={300} alt="Portrait Example" className="rounded-lg" />
           </div>
         </div>
       </div>
       <div className="mt-8">
         <h2 className="text-xl font-semibold">4. Finalize Your Order</h2>
         <p className="text-muted-foreground">
-          Once you've provided your photo and discussed your vision, our artist will create your custom portrait. If
-          you're not satisfied, you can provide feedback and we'll revise it.
+          Once youreact/no-unescaped-entitiesve provided your photo and discussed your vision, our artist will create your custom portrait. If
+          youreact/no-unescaped-entitiesre not satisfied, you can provide feedback and wereact/no-unescaped-entitiesll revise it.
         </p>
         <div className="mt-4">
           <Button>Start Creating</Button>
@@ -73,7 +74,7 @@ const CreatePortraitPage = () => {
       <div className="mt-8">
         <h2 className="text-xl font-semibold">Your Custom Comic</h2>
         <div className="grid grid-cols-2 gap-4 mt-4">
-          <img src="https://generated.vusercontent.net/placeholder.svg" width={400} height={400} alt="Custom Comic" className="rounded-lg" />
+          <Image src="https://generated.vusercontent.net/placeholder.svg" width={400} height={400} alt="Custom Comic" className="rounded-lg" />
           <div className="flex flex-col justify-center">
             <h3 className="text-lg font-semibold">Chat with AI to Modify</h3>
             <p className="text-muted-foreground">
@@ -95,7 +96,7 @@ const CreatePortraitPage = () => {
       <h1>Create Your Custom Portrait</h1>
       <p>Customize your portrait here.</p>
       <p>OpenAI Key: {openaiKey}</p>
-      <img src={imageUrl} alt="Example Image" />
+      <Image src={imageUrl} alt="Example Image" />
       <button onClick={handleSubmit}>Submit</button>
     </div>
   );

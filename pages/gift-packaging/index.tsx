@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGlobalContext } from '../../app/GlobalContext';
+import Image from 'next/image'
 
 const GiftPackagingPage = () => {
   const { openaiKey, imageUrl } = useGlobalContext();
@@ -9,7 +10,7 @@ const GiftPackagingPage = () => {
       <h1>Gift Packaging</h1>
       <p>Choose your gift packaging options here.</p>
       <p>OpenAI Key: {openaiKey}</p>
-      <img src={imageUrl} alt="Example Image" />
+      <Image src={imageUrl} alt="Example Image" />
     </div>
   );
 };
