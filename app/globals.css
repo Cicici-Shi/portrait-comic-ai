@@ -81,3 +81,7 @@ textarea {
 textarea::placeholder {
   color: var(--muted-foreground);
 }
+
+.bg-accent {
+  background-color: hsl(var(--accent))!important; /* 替换 #yourColor 为您想要的颜色 */
+}

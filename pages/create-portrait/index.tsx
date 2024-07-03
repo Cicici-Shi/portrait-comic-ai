@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../../app/GlobalContext";
 import { useRouter } from "next/router";
 import {
@@ -17,6 +17,9 @@ const CreatePortraitPage = () => {
   const handleSubmit = () => {
     router.push("/gift-packaging");
   };
+
+  const [selectedOption, setSelectedOption] = useState("Headshot");
+
   interface CardData {
     imageUrl: string;
     title: string;
@@ -69,9 +72,23 @@ const CreatePortraitPage = () => {
                   Chat with our AI assistant to describe the personalized
                   elements you&apos;d like to see in your portrait.
                 </p>
-                <div className="mt-4">
-                  <Button>Headshot</Button>
-                  <Button>Sticker</Button>
+                <div className="mt-4 grid grid-cols-2 gap-4">
+                  <Button
+                    className={`${
+                      selectedOption === "Headshot" ? "bg-accent" : ""
+                    }`}
+                    onClick={() => setSelectedOption("Headshot")}
+                  >
+                    Headshot
+                  </Button>
+                  <Button
+                    className={`${
+                      selectedOption === "Sticker" ? "bg-accent" : ""
+                    }`}
+                    onClick={() => setSelectedOption("Sticker")}
+                  >
+                    Sticker
+                  </Button>
                 </div>
                 <p className="text-muted-foreground">
                   Select a pre-designed template to use as a starting point for
@@ -100,8 +117,8 @@ const CreatePortraitPage = () => {
                   ))}
                 </div>{" "}
                 <p className="text-muted-foreground">
-                  or describe the personalized elements you'd like to see in
-                  your portrait.（强烈推荐一试）
+                  or describe the personalized elements you&apos;d like to see
+                  in your portrait.（强烈推荐一试）
                 </p>
                 <Card className="w-full max-w-md rounded-xl">
                   <CardContent className="p-4 flex flex-col h-[400px]">
@@ -120,7 +137,7 @@ const CreatePortraitPage = () => {
                           <div className="grid gap-1">
                             <div className="font-medium text-sm">You</div>
                             <div className="bg-muted rounded-lg p-2 text-xs max-w-[80%]">
-                              Hey there! How's it going?
+                              Hey there! How&apos;s it going?
                             </div>
                           </div>
                         </div>
@@ -130,7 +147,7 @@ const CreatePortraitPage = () => {
                               You
                             </div>
                             <div className="bg-primary rounded-lg p-2 text-xs max-w-[80%] text-primary-foreground">
-                              I'm doing great, thanks for asking!
+                              I&apos;m doing great, thanks for asking!
                             </div>
                           </div>
                           <Avatar className="w-7 h-7 border">
@@ -156,7 +173,7 @@ const CreatePortraitPage = () => {
                           <div className="grid gap-1">
                             <div className="font-medium text-sm">Friend</div>
                             <div className="bg-muted rounded-lg p-2 text-xs max-w-[80%]">
-                              That's awesome! I'm glad to hear it.
+                              That&apos;s awesome! I&apos;m glad to hear it.
                             </div>
                           </div>
                         </div>
@@ -166,7 +183,8 @@ const CreatePortraitPage = () => {
                               You
                             </div>
                             <div className="bg-primary rounded-lg p-2 text-xs max-w-[80%] text-primary-foreground">
-                              Yeah, it's been a great day so far. How about you?
+                              Yeah, it&apos;s been a great day so far. How about
+                              you?
                             </div>
                           </div>
                           <Avatar className="w-7 h-7 border">
